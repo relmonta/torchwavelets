@@ -1,0 +1,26 @@
+# Byte-compiled / optimized
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# Test / coverage
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# Environments
+.venv/
+venv/
+
+# Tooling
+.ruff_cache/
+.mypy_cache/
+
+# OS
+.DS_Store
+
+# Docs build output
+site/

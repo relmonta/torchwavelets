@@ -1,0 +1,69 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+        torch-version: ["2.6", "2.8", "stable"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install torch
+        if: matrix.torch-version != 'stable'
+        run: pip install "torch==${{ matrix.torch-version }}"
+      - name: Install package
+        run: pip install -e ".[test]"
+      - name: Lint
+        run: ruff check src tests examples
+      - name: Type check
+        run: pip install -q mypy && mypy src/torchwavelets
+      - name: Wheel smoke test (packaging)
+        run: |
+          pip wheel . --no-deps -w /tmp/wheels -q
+          pip install /tmp/wheels/*.whl --target /tmp/inst -q --no-deps
+          PYTHONPATH=/tmp/inst python -c "import torch, torchwavelets as tw; yl, yh = tw.dtcwt2d(torch.randn(1,1,16,16), J=1); print('wheel dtcwt ok', yl.shape)"
+      - name: Test (with coverage)
+        run: pytest tests/ -q --cov=torchwavelets --cov-report=xml
+      - name: Upload coverage
+        if: matrix.torch-version == 'stable'
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          fail_ci_if_error: false
+
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Build sdist + wheel
+        run: |
+          pip install -q build twine
+          python -m build
+          twine check dist/*
+      - name: Inspect contents
+        run: |
+          python - <<'EOF'
+          import tarfile, zipfile, glob
+          sd = glob.glob("dist/*.tar.gz")[0]
+          names = tarfile.open(sd).getnames()
+          assert any(n.endswith(".npz") for n in names), "sdist missing dtcwt data"
+          assert any("examples/" in n for n in names), "sdist missing examples"
+          assert any("docs/examples.md" in n for n in names), "sdist missing docs"
+          wh = glob.glob("dist/*.whl")[0]
+          wn = zipfile.ZipFile(wh).namelist()
+          assert sum(n.endswith(".npz") for n in wn) >= 14, "wheel missing dtcwt data"
+          print("sdist + wheel contents OK")
+          EOF

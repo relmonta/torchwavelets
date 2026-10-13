@@ -1,0 +1,7 @@
+# Ensure the bundled DTCWT filter data ships in sdists and wheels.
+include LICENSE
+include README.md
+recursive-include src/torchwavelets/dtcwt/data *.npz
+recursive-include docs *.md *.png
+graft examples
+global-exclude *.pyc

@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+message: >-
+  If you use this software, please cite it as below.
+title: "torchwavelets: differentiable discrete wavelet transforms for PyTorch"
+abstract: >-
+  torchwavelets is a torch-native successor to the unmaintained
+  pytorch_wavelets package. It provides 1D/2D discrete wavelet transforms,
+  1D/2D/3D dual-tree complex wavelet transforms with native complex tensors,
+  DTCWT scattering networks (including a general arbitrary-order network),
+  the stationary (undecimated) wavelet transform and wavelet packets — all
+  bit-exact against PyWavelets and the reference numpy dtcwt package, with a
+  full dtype/device/autocast precision contract, torch.compile support, a
+  pytorch_wavelets compatibility layer, and GPU validation on NVIDIA
+  Grace-Hopper and AMD MI210.
+authors:
+  - family-names: El Montassir
+    given-names: Rachid
+license: BSD-3-Clause
+version: 0.1.0
+keywords:
+  - wavelet
+  - dwt
+  - dtcwt
+  - dual-tree complex wavelet transform
+  - scattering transform
+  - stationary wavelet transform
+  - wavelet packets
+  - pytorch
+  - deep learning
+  - signal processing
+repository-code: "https://github.com/relmonta/torchwavelets"

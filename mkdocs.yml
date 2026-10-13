@@ -1,0 +1,93 @@
+site_name: torchwavelets
+site_description: >-
+  Differentiable discrete wavelet transforms for PyTorch: DWT (1D/2D), DTCWT
+  (1D/2D/3D), DTCWT scattering, SWT and wavelet packets — with PyWavelets
+  parity, full dtype/device/autocast support and torch.compile compatibility.
+site_url: https://relmonta.github.io/torchwavelets/
+repo_url: https://github.com/relmonta/torchwavelets
+repo_name: relmonta/torchwavelets
+edit_uri: blob/main/docs/
+
+# The Home page embeds the README, whose links are GitHub-relative
+# (docs/examples.md, examples/README.md, CITATION.cff) and cannot resolve
+# inside the docs tree. Keep all other link validation strict.
+validation:
+  links:
+    not_found: ignore
+
+copyright: Copyright &copy; 2026 Rachid El Montassir &mdash; BSD-3-Clause
+
+nav:
+  - Home: index.md
+  - Examples and applications: examples.md
+  - API reference: api.md
+
+theme:
+  name: material
+  icon:
+    repo: fontawesome/brands/github
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.top
+    - toc.follow
+    - content.code.copy
+    - content.code.annotate
+    - search.suggest
+    - search.highlight
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: teal
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: teal
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+plugins:
+  - search
+  - mkdocstrings:
+      default_handler: python
+      handlers:
+        python:
+          inventories:
+            - url: https://docs.python.org/3/objects.inv
+          options:
+            show_source: false
+            show_root_heading: true
+            show_root_full_path: false
+            show_category_heading: true
+            docstring_style: google
+            separate_signature: true
+            line_length: 100
+            members_order: source
+
+markdown_extensions:
+  - pymdownx.snippets:
+      base_path: ["."]
+      check_paths: true
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - admonition
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true
+  - tables
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/relmonta/torchwavelets
