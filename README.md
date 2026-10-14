@@ -253,7 +253,7 @@ If you use this package in research, please cite it — see
 
 ## License
 
-BSD-3-Clause (see `LICENSE`). See
+Apache-2.0 (see `LICENSE`). See
 [Credits and acknowledgements](#credits-and-acknowledgements) for the
 upstream sources: the DTCWT filter banks originate from Nick Kingsbury's
 MATLAB toolbox, which is free for **research use only** — relevant if you
