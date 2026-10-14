@@ -2,9 +2,9 @@
 
 [![CI](https://github.com/relmonta/torchwavelets/actions/workflows/ci.yml/badge.svg)](https://github.com/relmonta/torchwavelets/actions/workflows/ci.yml)
 [![Docs](https://github.com/relmonta/torchwavelets/actions/workflows/docs.yml/badge.svg)](https://relmonta.github.io/torchwavelets/)
-[![PyPI version](https://img.shields.io/pypi/v/torchwavelets.svg)](https://pypi.org/project/torchwavelets/)
-[![Python versions](https://img.shields.io/pypi/pyversions/torchwavelets.svg)](https://pypi.org/project/torchwavelets/)
-[![License](https://img.shields.io/pypi/l/torchwavelets.svg)](https://github.com/relmonta/torchwavelets/blob/main/LICENSE)
+[![PyPI version](https://img.shields.io/pypi/v/torchwavelets.svg?cacheSeconds=600)](https://pypi.org/project/torchwavelets/)
+[![Python versions](https://img.shields.io/pypi/pyversions/torchwavelets.svg?cacheSeconds=600)](https://pypi.org/project/torchwavelets/)
+[![License](https://img.shields.io/pypi/l/torchwavelets.svg?cacheSeconds=600)](https://github.com/relmonta/torchwavelets/blob/main/LICENSE)
 [![Code style: ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 
 Differentiable discrete wavelet transforms for PyTorch.
@@ -253,7 +253,7 @@ If you use this package in research, please cite it — see
 
 ## License
 
-BSD-3-Clause (see `LICENSE`). See
+Apache-2.0 (see `LICENSE`). See
 [Credits and acknowledgements](#credits-and-acknowledgements) for the
 upstream sources: the DTCWT filter banks originate from Nick Kingsbury's
 MATLAB toolbox, which is free for **research use only** — relevant if you
