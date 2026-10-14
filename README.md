@@ -53,7 +53,17 @@ is unmaintained (last commit 2023) and has well-known problems:
 
 ## Installation
 
+From PyPI (stable release):
+
 ```bash
+pip install torchwavelets
+```
+
+From source (development):
+
+```bash
+git clone https://github.com/relmonta/torchwavelets.git
+cd torchwavelets
 pip install -e .[test,examples]
 ```
 
